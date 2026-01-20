@@ -1,19 +1,22 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth overflow-x-hidden">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DefyAI Security | Smart Personal Defense</title>
     <meta name="description" content="A Smart personal security like your smart home and you.">
-    
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Fonts: Space Grotesk for GenZ/Tech feel & Inter for readability -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@300;500;700&display=swap"
+        rel="stylesheet">
+
     <!-- Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
@@ -53,7 +56,8 @@
             background-color: #050505;
             color: #ffffff;
             overflow-x: hidden;
-            cursor: none; /* Custom cursor */
+            cursor: none;
+            /* Custom cursor */
         }
 
         /* Custom Cursor */
@@ -67,11 +71,13 @@
             z-index: 9999;
             pointer-events: none;
         }
+
         .cursor-dot {
             width: 8px;
             height: 8px;
             background-color: #00f3ff;
         }
+
         .cursor-outline {
             width: 40px;
             height: 40px;
@@ -99,14 +105,14 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
-        
+
         .glass-button {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(4px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
         }
-        
+
         .glass-button:hover {
             background: rgba(255, 255, 255, 0.1);
             border-color: #00f3ff;
@@ -119,7 +125,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        
+
         .text-gradient-accent {
             background: linear-gradient(135deg, #00f3ff 0%, #bc13fe 100%);
             -webkit-background-clip: text;
@@ -141,6 +147,32 @@
             position: relative;
             overflow: hidden;
         }
+
+        /* Hide Scrollbar Utilities */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Marquee Animation */
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .animate-marquee {
+            animation: marquee 30s linear infinite;
+        }
+
         .poster-glitch::before {
             content: '';
             position: absolute;
@@ -148,83 +180,108 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: repeating-linear-gradient(
-                transparent 0,
-                transparent 2px,
-                rgba(0, 243, 255, 0.1) 3px
-            );
+            background: repeating-linear-gradient(transparent 0,
+                    transparent 2px,
+                    rgba(0, 243, 255, 0.1) 3px);
             animation: spin-slow 20s linear infinite;
         }
     </style>
 </head>
+
 <body class="antialiased selection:bg-neon-cyan selection:text-black">
 
     <!-- Custom Cursor Elements -->
     <div class="cursor-dot hidden md:block"></div>
     <div class="cursor-outline hidden md:block"></div>
-    
+
     <!-- Background Elements -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-[-1]">
+        <div class="orb w-96 h-96 bg-neon-cyan top-[-10%] left-[-10%] animate-pulse-slow"></div>
+        <div class="orb w-[500px] h-[500px] bg-neon-purple bottom-[10%] right-[-10%] animate-pulse-slow"
+            style="animation-delay: 2s;"></div>
+    </div>
     <div class="noise-overlay"></div>
-    <div class="orb w-96 h-96 bg-neon-cyan top-[-10%] left-[-10%] animate-pulse-slow"></div>
-    <div class="orb w-[500px] h-[500px] bg-neon-purple bottom-[10%] right-[-10%] animate-pulse-slow" style="animation-delay: 2s;"></div>
 
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 px-6 py-6">
-        <div class="max-w-7xl mx-auto flex justify-between items-center glass-panel rounded-full px-8 py-4">
+    <nav class="fixed top-0 w-full z-50 px-4 py-4 md:px-6 md:py-6 flex justify-center">
+        <div
+            class="w-full max-w-7xl mx-auto flex justify-between items-center glass-panel rounded-full px-5 py-3 md:px-8 md:py-4">
             <a href="#" class="font-display font-bold text-2xl tracking-tighter hover:text-neon-cyan transition-colors">
                 Defy<span class="text-neon-cyan">AI</span>
             </a>
-            
+
             <div class="hidden md:flex gap-8 text-sm font-medium text-gray-300">
-                <a href="#problem" class="hover:text-white transition-colors">The Threat</a>
-                <a href="#solution" class="hover:text-white transition-colors">The Shield</a>
-                <a href="#campaign" class="hover:text-white transition-colors">Vision</a>
+                <a href="#problem" class="hover:text-white hover:scale-105 transition-all duration-300">The Threat</a>
+                <a href="#solution" class="hover:text-white hover:scale-105 transition-all duration-300">The Shield</a>
+                <a href="#campaign" class="hover:text-white hover:scale-105 transition-all duration-300">Vision</a>
+                <a href="#compliance" class="hover:text-white hover:scale-105 transition-all duration-300">Trust</a>
             </div>
 
-            <a href="#contact" class="hidden md:block bg-white text-black font-bold px-6 py-2 rounded-full hover:bg-neon-cyan transition-colors text-sm">
+            <a href="#contact"
+                class="hidden md:block bg-white text-black font-bold px-6 py-2 rounded-full hover:bg-neon-cyan transition-colors text-sm">
                 Get Protected
             </a>
-            
+
             <!-- Mobile Menu Icon -->
-            <button class="md:hidden text-white">
-                <i data-lucide="menu"></i>
+            <button id="mobileMenuBtn" class="md:hidden text-white relative z-50">
+                <i data-lucide="menu" class="w-8 h-8"></i>
             </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobileMenu"
+            class="fixed inset-0 bg-black/95 backdrop-blur-xl z-40 translate-x-full transition-transform duration-500 flex flex-col items-center justify-center gap-8 md:hidden">
+            <a href="#problem" class="text-2xl font-display font-bold hover:text-neon-cyan transition-colors"
+                onclick="toggleMobileMenu()">The Threat</a>
+            <a href="#solution" class="text-2xl font-display font-bold hover:text-neon-cyan transition-colors"
+                onclick="toggleMobileMenu()">The Shield</a>
+            <a href="#campaign" class="text-2xl font-display font-bold hover:text-neon-cyan transition-colors"
+                onclick="toggleMobileMenu()">Vision</a>
+            <a href="#compliance" class="text-2xl font-display font-bold hover:text-neon-cyan transition-colors"
+                onclick="toggleMobileMenu()">Trust</a>
+            <a href="#contact"
+                class="bg-neon-cyan text-black font-bold px-8 py-3 rounded-full hover:scale-105 transition-transform"
+                onclick="toggleMobileMenu()">Get Protected</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <main class="relative pt-40 pb-20 px-6">
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
-            
+    <main class="relative pt-32 md:pt-40 pb-12 md:pb-20 px-4 md:px-6 w-full overflow-x-hidden">
+        <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center">
+
             <!-- Hero Text -->
             <div class="order-2 lg:order-1 relative z-10">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neon-cyan/30 bg-neon-cyan/5 text-neon-cyan text-xs font-bold mb-6 tracking-wide uppercase">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neon-cyan/30 bg-neon-cyan/5 text-neon-cyan text-xs font-bold mb-6 tracking-wide uppercase">
                     <span class="w-2 h-2 rounded-full bg-neon-cyan animate-pulse"></span>
                     GenZ Security Redefined
                 </div>
-                
-                <h1 class="font-display text-5xl md:text-7xl font-bold leading-tight mb-6">
+
+                <h1 class="font-display text-4xl sm:text-5xl md:text-7xl font-bold leading-tight mb-6">
                     Your Digital <br />
                     <span class="text-gradient-accent">Bodyguard.</span>
                 </h1>
-                
+
                 <p class="text-gray-400 text-lg md:text-xl mb-8 max-w-lg leading-relaxed">
-                    A Smart personal security like your smart home and you. 
+                    A Smart personal security like your smart home and you.
                     <span class="text-gray-500 block mt-2 text-sm">Domain: Defyaisecurity.in</span>
                 </p>
 
                 <div class="flex flex-col sm:flex-row gap-4">
                     <!-- Pre Book Button (Mailto) -->
-                    <a href="mailto:defyaicompany@gmail.com?subject=Pre-book%20DefyAI%20Subscription&body=Hi%20DefyAI%20Team,%0A%0AI%20am%20interested%20in%20pre-booking%20the%20DefyAI%20subscription.%20Please%20keep%20me%20updated%20on%20the%20launch.%0A%0AThanks!" 
-                       class="group relative overflow-hidden bg-neon-cyan text-black font-bold py-4 px-8 rounded-xl flex items-center justify-center gap-2 hover:scale-[1.02] transition-transform">
+                    <a href="mailto:defyaicompany@gmail.com?subject=Pre-book%20DefyAI%20Subscription&body=Hi%20DefyAI%20Team,%0A%0AI%20am%20interested%20in%20pre-booking%20the%20DefyAI%20subscription.%20Please%20keep%20me%20updated%20on%20the%20launch.%0A%0AThanks!"
+                        class="group relative overflow-hidden bg-neon-cyan text-black font-bold py-4 px-8 rounded-xl flex items-center justify-center gap-2 hover:scale-[1.02] transition-transform">
                         <span>Pre-book Subscription</span>
                         <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
-                        <div class="absolute inset-0 bg-white/30 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                        <div
+                            class="absolute inset-0 bg-white/30 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                        </div>
                     </a>
 
                     <!-- Early Access (WhatsApp) -->
-                    <a href="https://chat.whatsapp.com/" target="_blank" onclick="alert('Redirecting to DefyAI Early Access WhatsApp Group...')"
-                       class="glass-button text-white font-medium py-4 px-8 rounded-xl flex items-center justify-center gap-2">
+                    <a href="https://chat.whatsapp.com/" target="_blank"
+                        onclick="alert('Redirecting to DefyAI Early Access WhatsApp Group...')"
+                        class="glass-button text-white font-medium py-4 px-8 rounded-xl flex items-center justify-center gap-2">
                         <i data-lucide="message-circle" class="w-5 h-5"></i>
                         Join Early Access
                     </a>
@@ -232,13 +289,18 @@
             </div>
 
             <!-- Hero Visual (Abstract CSS 3D representation) -->
-            <div class="order-1 lg:order-2 relative h-[400px] lg:h-[600px] flex items-center justify-center animate-float">
+            <div
+                class="order-1 lg:order-2 relative h-[400px] lg:h-[600px] flex items-center justify-center animate-float">
                 <!-- Outer Ring -->
-                <div class="absolute w-64 h-64 md:w-96 md:h-96 rounded-full border border-neon-purple/20 animate-spin-slow"></div>
-                <div class="absolute w-56 h-56 md:w-80 md:h-80 rounded-full border border-dashed border-neon-cyan/30 animate-spin-slow" style="animation-direction: reverse;"></div>
-                
+                <div
+                    class="absolute w-64 h-64 md:w-96 md:h-96 rounded-full border border-neon-purple/20 animate-spin-slow">
+                </div>
+                <div class="absolute w-56 h-56 md:w-80 md:h-80 rounded-full border border-dashed border-neon-cyan/30 animate-spin-slow"
+                    style="animation-direction: reverse;"></div>
+
                 <!-- Central Core -->
-                <div class="relative glass-panel w-48 h-48 md:w-64 md:h-64 rounded-2xl flex items-center justify-center transform rotate-12 hover:rotate-0 transition-all duration-700 hover:scale-110">
+                <div
+                    class="relative glass-panel w-48 h-48 md:w-64 md:h-64 rounded-2xl flex items-center justify-center transform rotate-12 hover:rotate-0 transition-all duration-700 hover:scale-110">
                     <div class="text-center">
                         <i data-lucide="shield-check" class="w-16 h-16 text-neon-cyan mx-auto mb-4"></i>
                         <h3 class="font-display font-bold text-2xl">DefyAI</h3>
@@ -247,11 +309,13 @@
                 </div>
 
                 <!-- Floating Elements -->
-                <div class="absolute top-10 right-10 glass-panel p-3 rounded-lg flex items-center gap-2 animate-bounce" style="animation-duration: 3s;">
+                <div class="absolute top-10 right-10 glass-panel p-3 rounded-lg flex items-center gap-2 animate-bounce"
+                    style="animation-duration: 3s;">
                     <div class="w-2 h-2 bg-green-500 rounded-full"></div>
                     <span class="text-xs font-mono">Threat Blocked</span>
                 </div>
-                <div class="absolute bottom-10 left-10 glass-panel p-3 rounded-lg flex items-center gap-2 animate-bounce" style="animation-duration: 4s;">
+                <div class="absolute bottom-10 left-10 glass-panel p-3 rounded-lg flex items-center gap-2 animate-bounce"
+                    style="animation-duration: 4s;">
                     <i data-lucide="lock" class="w-3 h-3 text-neon-purple"></i>
                     <span class="text-xs font-mono">Data Encrypted</span>
                 </div>
@@ -260,16 +324,20 @@
     </main>
 
     <!-- Problem vs Solution Section (Bento Grid) -->
-    <section id="problem" class="py-20 px-6 relative z-10">
+    <!-- Problem vs Solution Section (Bento Grid) -->
+    <section id="problem" class="py-12 md:py-20 px-4 md:px-6 relative z-10">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
-                <h2 class="font-display text-3xl md:text-5xl font-bold mb-4">The Digital <span class="text-neon-purple">Battlefield</span></h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">Corporate employees and GenZ are the most targeted demographics for sophisticated phishing and data theft.</p>
+                <h2 class="font-display text-3xl md:text-5xl font-bold mb-4">The Digital <span
+                        class="text-neon-purple">Battlefield</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Corporate employees and GenZ are the most targeted
+                    demographics for sophisticated phishing and data theft.</p>
             </div>
 
             <div class="grid md:grid-cols-2 gap-8">
                 <!-- Problem Card -->
-                <div class="glass-panel p-8 rounded-3xl border-l-4 border-red-500 hover:bg-red-500/5 transition-colors group">
+                <div
+                    class="glass-panel p-6 md:p-8 rounded-3xl border-l-4 border-red-500 hover:bg-red-500/5 transition-colors group">
                     <div class="flex justify-between items-start mb-6">
                         <h3 class="font-display text-2xl font-bold">The Problem</h3>
                         <i data-lucide="alert-triangle" class="text-red-500 w-8 h-8"></i>
@@ -291,7 +359,8 @@
                 </div>
 
                 <!-- Solution Card -->
-                <div id="solution" class="glass-panel p-8 rounded-3xl border-l-4 border-neon-cyan hover:bg-neon-cyan/5 transition-colors">
+                <div id="solution"
+                    class="glass-panel p-6 md:p-8 rounded-3xl border-l-4 border-neon-cyan hover:bg-neon-cyan/5 transition-colors">
                     <div class="flex justify-between items-start mb-6">
                         <h3 class="font-display text-2xl font-bold text-white">The DefyAI Solution</h3>
                         <i data-lucide="check-circle-2" class="text-neon-cyan w-8 h-8"></i>
@@ -299,7 +368,8 @@
                     <ul class="space-y-4 text-gray-300">
                         <li class="flex items-center gap-3">
                             <i data-lucide="check" class="text-neon-cyan w-4 h-4"></i>
-                            <span class="text-white font-medium">Adaptive AI</span> that learns your specific behavior patterns.
+                            <span class="text-white font-medium">Adaptive AI</span> that learns your specific behavior
+                            patterns.
                         </li>
                         <li class="flex items-center gap-3">
                             <i data-lucide="check" class="text-neon-cyan w-4 h-4"></i>
@@ -311,22 +381,102 @@
                         </li>
                     </ul>
                 </div>
+
+                <!-- Whitepaper Card (Full Width) -->
+                <div
+                    class="md:col-span-2 glass-panel p-6 md:p-8 rounded-3xl border border-white/10 relative overflow-hidden group">
+                    <div
+                        class="absolute top-0 right-0 p-32 bg-neon-purple/20 blur-[100px] pointer-events-none group-hover:bg-neon-purple/30 transition-colors">
+                    </div>
+                    <div class="flex flex-col md:flex-row gap-8 items-center relative z-10">
+                        <div class="flex-1 text-left">
+                            <div
+                                class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-neon-cyan text-xs font-mono font-bold mb-4">
+                                <i data-lucide="file-text" class="w-3 h-3"></i>
+                                WHITEPAPER 2024
+                            </div>
+                            <h3 class="font-display text-2xl md:text-3xl font-bold mb-2">AI Agents in Cybersecurity</h3>
+                            <p class="text-gray-400 mb-6">Deep dive into how autonomous agents are reshaping threat
+                                detection and personal defense strategies.</p>
+                            <a href="#"
+                                class="inline-flex items-center gap-2 text-white font-bold hover:text-neon-cyan transition-colors group/link">
+                                <span>Read the Report</span>
+                                <i data-lucide="arrow-right"
+                                    class="w-4 h-4 group-hover/link:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                        <div
+                            class="w-full md:w-1/3 aspect-[4/3] bg-black/50 rounded-xl border border-white/10 flex items-center justify-center relative overflow-hidden">
+                            <!-- Abstract Document Visualization -->
+                            <div
+                                class="absolute inset-0 bg-[linear-gradient(45deg,transparent_45%,rgba(255,255,255,0.05)_50%,transparent_55%)] bg-[length:200%_200%] animate-spin-slow opacity-50">
+                            </div>
+                            <i data-lucide="file-bar-chart-2"
+                                class="w-16 h-16 text-gray-600 group-hover:text-neon-purple transition-colors duration-500"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Marketing Campaign Showcase (Simulated AI Art) -->
-    <section id="campaign" class="py-20 px-6 bg-gradient-to-b from-transparent to-black/80">
+    <!-- Marketing Campaign Showcase (Simulated AI Art) -->
+    <section id="campaign" class="py-12 md:py-20 px-4 md:px-6 bg-gradient-to-b from-transparent to-black/80">
         <div class="max-w-7xl mx-auto">
-            <h2 class="font-display text-3xl font-bold mb-10 border-l-4 border-white pl-4">Defy Expected. <span class="text-gray-500 font-normal">Our Vision.</span></h2>
-            
-            <!-- Horizontal Scroll Container -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                
+            <h2 class="font-display text-3xl font-bold mb-10 border-l-4 border-white pl-4">Defy Expected. <span
+                    class="text-gray-500 font-normal">Our Vision.</span></h2>
+
+            <!-- Video Placeholder Card -->
+            <div
+                class="relative w-full aspect-video md:aspect-[21/9] rounded-3xl overflow-hidden glass-panel border border-white/10 group cursor-pointer mb-12">
+                <!-- Abstract Animated Background for Placeholder -->
+                <div class="absolute inset-0 bg-neutral-900">
+                    <div
+                        class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(0,243,255,0.1),transparent_70%)] animate-pulse-slow">
+                    </div>
+                    <div
+                        class="absolute top-0 left-0 w-full h-full bg-[linear-gradient(45deg,transparent_45%,rgba(255,255,255,0.03)_50%,transparent_55%)] bg-[length:200%_200%] animate-spin-slow">
+                    </div>
+                </div>
+
+                <!-- Play Button Overlay -->
+                <div
+                    class="absolute inset-0 flex flex-col items-center justify-center z-10 bg-black/20 group-hover:bg-black/10 transition-colors duration-500">
+                    <div
+                        class="w-24 h-24 rounded-full bg-white/5 backdrop-blur-xl border border-white/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-[0_0_30px_rgba(0,243,255,0.2)]">
+                        <i data-lucide="play" class="w-8 h-8 text-white fill-white ml-1"></i>
+                    </div>
+                </div>
+
+                <!-- Labels -->
+                <div class="absolute top-6 left-6 z-10 flex gap-2">
+                    <span
+                        class="px-3 py-1 rounded-full bg-neon-cyan/10 border border-neon-cyan/20 text-neon-cyan text-xs font-mono font-bold tracking-wider">PREMIERE</span>
+                    <span
+                        class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-gray-300 text-xs font-mono tracking-wider">2:45
+                        MIN</span>
+                </div>
+
+                <div class="absolute bottom-8 left-8 z-10 max-w-2xl">
+                    <h3 class="font-display text-3xl md:text-5xl font-bold mb-2">The Architecture of Safety</h3>
+                    <p class="text-gray-300 text-sm md:text-base">Discover how DefyAI is rebuilding personal security
+                        from the ground up.</p>
+                </div>
+            </div>
+
+            <!-- Horizontal Scroll Container (Mobile Swipe / Desktop Grid) -->
+            <div
+                class="flex md:grid md:grid-cols-3 gap-6 overflow-x-auto md:overflow-visible pb-8 md:pb-0 snap-x snap-mandatory scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0">
+
                 <!-- Poster 1: The Glitch -->
-                <div class="group relative aspect-[3/4] rounded-2xl overflow-hidden cursor-pointer">
-                    <div class="absolute inset-0 bg-neutral-900 poster-glitch transition-transform duration-500 group-hover:scale-110"></div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+                <div
+                    class="group relative min-w-[85vw] md:min-w-0 aspect-[3/4] rounded-2xl overflow-hidden cursor-pointer snap-center">
+                    <div
+                        class="absolute inset-0 bg-neutral-900 poster-glitch transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90">
+                    </div>
                     <div class="absolute bottom-6 left-6 right-6">
                         <p class="font-mono text-neon-cyan text-xs mb-2">CAMPAIGN 001</p>
                         <h4 class="font-display text-3xl font-bold leading-none mb-2">INVISIBLE<br>SHIELD</h4>
@@ -335,10 +485,13 @@
                 </div>
 
                 <!-- Poster 2: The Network -->
-                <div class="group relative aspect-[3/4] rounded-2xl overflow-hidden cursor-pointer">
+                <div
+                    class="group relative min-w-[85vw] md:min-w-0 aspect-[3/4] rounded-2xl overflow-hidden cursor-pointer snap-center">
                     <div class="absolute inset-0 bg-indigo-900 transition-transform duration-500 group-hover:scale-110">
                         <!-- Abstract CSS Shapes -->
-                        <div class="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-neon-purple/40 to-transparent"></div>
+                        <div
+                            class="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-neon-purple/40 to-transparent">
+                        </div>
                         <div class="grid grid-cols-6 gap-1 w-full h-full opacity-20">
                             <div class="bg-white/10 h-full"></div>
                             <div class="bg-white/10 h-full"></div>
@@ -348,7 +501,8 @@
                             <div class="bg-white/10 h-full"></div>
                         </div>
                     </div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90">
+                    </div>
                     <div class="absolute bottom-6 left-6 right-6">
                         <p class="font-mono text-neon-purple text-xs mb-2">CAMPAIGN 002</p>
                         <h4 class="font-display text-3xl font-bold leading-none mb-2">DIGITAL<br>DNA</h4>
@@ -357,13 +511,16 @@
                 </div>
 
                 <!-- Poster 3: The Future -->
-                <div class="group relative aspect-[3/4] rounded-2xl overflow-hidden cursor-pointer">
-                    <div class="absolute inset-0 bg-gray-900 transition-transform duration-500 group-hover:scale-110 flex items-center justify-center">
+                <div
+                    class="group relative min-w-[85vw] md:min-w-0 aspect-[3/4] rounded-2xl overflow-hidden cursor-pointer snap-center">
+                    <div
+                        class="absolute inset-0 bg-gray-900 transition-transform duration-500 group-hover:scale-110 flex items-center justify-center">
                         <div class="w-32 h-32 border-4 border-white rounded-full flex items-center justify-center">
                             <div class="w-20 h-20 bg-white rounded-full animate-pulse"></div>
                         </div>
                     </div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90">
+                    </div>
                     <div class="absolute bottom-6 left-6 right-6">
                         <p class="font-mono text-white text-xs mb-2">CAMPAIGN 003</p>
                         <h4 class="font-display text-3xl font-bold leading-none mb-2">FUTURE<br>PROOF</h4>
@@ -375,38 +532,428 @@
         </div>
     </section>
 
-    <!-- Footer / Contact Section -->
-    <footer id="contact" class="pt-20 pb-10 px-6 relative overflow-hidden">
-        <!-- Footer Background Glow -->
-        <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-3xl h-64 bg-neon-cyan/10 blur-[100px] pointer-events-none"></div>
+    <!-- Compliance & Governance Section -->
+    <section id="compliance" class="py-12 md:py-20 bg-black text-center relative overflow-hidden">
+        <!-- Background Elements -->
+        <div
+            class="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_#000_100%)] z-10 pointer-events-none">
+        </div>
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-neon-cyan/5 blur-[120px] rounded-full pointer-events-none">
+        </div>
 
-        <div class="max-w-4xl mx-auto text-center relative z-10">
-            <h2 class="font-display text-4xl md:text-6xl font-bold mb-8">Ready to Defy Risks?</h2>
-            
-            <div class="glass-panel p-8 rounded-2xl inline-block w-full max-w-lg mx-auto mb-12 text-left">
-                <div class="flex items-center gap-4 mb-6">
-                    <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center">
-                        <i data-lucide="user" class="text-white"></i>
-                    </div>
+        <div class="max-w-6xl mx-auto px-6 relative z-20">
+            <div class="mb-16">
+                <!-- HUD Line -->
+                <div class="flex items-center justify-center gap-4 mb-4 opacity-50">
+                    <div class="h-[1px] w-12 bg-neon-cyan"></div>
+                    <p class="text-xs font-mono font-bold tracking-[0.3em] text-neon-cyan uppercase">System Status:
+                        Secure</p>
+                    <div class="h-[1px] w-12 bg-neon-cyan"></div>
+                </div>
+
+                <h2 class="font-display text-4xl md:text-5xl font-bold mb-6">Compliance & Governance</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">
+                    DXSO takes data security seriously. We maintain strict adherence to global security standards to
+                    ensure your digital ecosystem remains inviolable.
+                </p>
+            </div>
+
+        </div>
+
+        <!-- Certification Grid (Staggered Animation) -->
+        <!-- Mobile Marquee (Visible only on mobile) -->
+        <div class="md:hidden w-full overflow-hidden pb-8 relative">
+            <div
+                class="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none">
+            </div>
+            <div
+                class="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none">
+            </div>
+
+            <div class="flex w-max animate-marquee gap-4">
+                <!-- Original Set -->
+                <div
+                    class="glass-panel p-4 rounded-xl w-[160px] flex-shrink-0 flex flex-col items-center justify-center gap-3 border border-white/10">
+                    <i data-lucide="lock" class="w-6 h-6 text-neon-cyan"></i>
                     <div>
-                        <p class="text-xs text-gray-400 uppercase font-bold tracking-wider">Contact Founder</p>
-                        <h4 class="text-xl font-bold">Gokul Mathukmalli</h4>
+                        <h4 class="font-bold text-white text-xs tracking-wider">PCI DSS</h4>
+                        <p class="text-[10px] text-green-500 font-mono mt-1">● READY</p>
                     </div>
                 </div>
-                
-                <div class="space-y-4">
-                    <a href="tel:9699172609" class="flex items-center gap-3 text-gray-300 hover:text-neon-cyan transition-colors group">
-                        <i data-lucide="phone" class="w-5 h-5 group-hover:rotate-12 transition-transform"></i>
-                        <span class="text-lg">9699172609</span>
-                    </a>
-                    <a href="mailto:defyaicompany@gmail.com" class="flex items-center gap-3 text-gray-300 hover:text-neon-cyan transition-colors group">
-                        <i data-lucide="mail" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
-                        <span class="text-lg">defyaicompany@gmail.com</span>
-                    </a>
+                <div
+                    class="glass-panel p-4 rounded-xl w-[160px] flex-shrink-0 flex flex-col items-center justify-center gap-3 border border-white/10">
+                    <i data-lucide="globe" class="w-6 h-6 text-neon-cyan"></i>
+                    <div>
+                        <h4 class="font-bold text-white text-xs tracking-wider">HIPAA</h4>
+                        <p class="text-[10px] text-green-500 font-mono mt-1">● COMPLIANT</p>
+                    </div>
+                </div>
+                <div
+                    class="glass-panel p-4 rounded-xl w-[160px] flex-shrink-0 flex flex-col items-center justify-center gap-3 border border-neon-cyan/30 bg-neon-cyan/5">
+                    <i data-lucide="award" class="w-6 h-6 text-neon-cyan"></i>
+                    <div>
+                        <h4 class="font-bold text-white text-xs tracking-wider">ISO 27001</h4>
+                        <p class="text-[10px] text-neon-cyan font-mono mt-1">● CERTIFIED</p>
+                    </div>
+                </div>
+                <div
+                    class="glass-panel p-4 rounded-xl w-[160px] flex-shrink-0 flex flex-col items-center justify-center gap-3 border border-white/10">
+                    <i data-lucide="shield-check" class="w-6 h-6 text-neon-cyan"></i>
+                    <div>
+                        <h4 class="font-bold text-white text-xs tracking-wider">SOC2 TYPE II</h4>
+                        <p class="text-[10px] text-green-500 font-mono mt-1">● ACTIVE</p>
+                    </div>
+                </div>
+                <div
+                    class="glass-panel p-4 rounded-xl w-[160px] flex-shrink-0 flex flex-col items-center justify-center gap-3 border border-white/10">
+                    <i data-lucide="check-circle" class="w-6 h-6 text-neon-cyan"></i>
+                    <div>
+                        <h4 class="font-bold text-white text-xs tracking-wider">GDPR</h4>
+                        <p class="text-[10px] text-green-500 font-mono mt-1">● COMPLIANT</p>
+                    </div>
+                </div>
+
+                <!-- Duplicate Set for Loop -->
+                <div
+                    class="glass-panel p-4 rounded-xl w-[160px] flex-shrink-0 flex flex-col items-center justify-center gap-3 border border-white/10">
+                    <i data-lucide="lock" class="w-6 h-6 text-neon-cyan"></i>
+                    <div>
+                        <h4 class="font-bold text-white text-xs tracking-wider">PCI DSS</h4>
+                        <p class="text-[10px] text-green-500 font-mono mt-1">● READY</p>
+                    </div>
+                </div>
+                <div
+                    class="glass-panel p-4 rounded-xl w-[160px] flex-shrink-0 flex flex-col items-center justify-center gap-3 border border-white/10">
+                    <i data-lucide="globe" class="w-6 h-6 text-neon-cyan"></i>
+                    <div>
+                        <h4 class="font-bold text-white text-xs tracking-wider">HIPAA</h4>
+                        <p class="text-[10px] text-green-500 font-mono mt-1">● COMPLIANT</p>
+                    </div>
+                </div>
+                <div
+                    class="glass-panel p-4 rounded-xl w-[160px] flex-shrink-0 flex flex-col items-center justify-center gap-3 border border-neon-cyan/30 bg-neon-cyan/5">
+                    <i data-lucide="award" class="w-6 h-6 text-neon-cyan"></i>
+                    <div>
+                        <h4 class="font-bold text-white text-xs tracking-wider">ISO 27001</h4>
+                        <p class="text-[10px] text-neon-cyan font-mono mt-1">● CERTIFIED</p>
+                    </div>
+                </div>
+                <div
+                    class="glass-panel p-4 rounded-xl w-[160px] flex-shrink-0 flex flex-col items-center justify-center gap-3 border border-white/10">
+                    <i data-lucide="shield-check" class="w-6 h-6 text-neon-cyan"></i>
+                    <div>
+                        <h4 class="font-bold text-white text-xs tracking-wider">SOC2 TYPE II</h4>
+                        <p class="text-[10px] text-green-500 font-mono mt-1">● ACTIVE</p>
+                    </div>
+                </div>
+                <div
+                    class="glass-panel p-4 rounded-xl w-[160px] flex-shrink-0 flex flex-col items-center justify-center gap-3 border border-white/10">
+                    <i data-lucide="check-circle" class="w-6 h-6 text-neon-cyan"></i>
+                    <div>
+                        <h4 class="font-bold text-white text-xs tracking-wider">GDPR</h4>
+                        <p class="text-[10px] text-green-500 font-mono mt-1">● COMPLIANT</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Desktop Grid (Hidden on mobile) -->
+        <div class="hidden md:grid grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6 stagger-grid justify-center px-4 md:px-0">
+
+            <!-- Card 1 -->
+            <div class="reveal-item glass-panel p-6 rounded-xl border border-white/10 hover:border-neon-cyan/50 hover:bg-white/5 transition-all group flex flex-col items-center justify-center gap-4"
+                data-delay="100">
+                <div
+                    class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <i data-lucide="lock"
+                        class="w-6 h-6 text-gray-300 group-hover:text-neon-cyan transition-colors"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white text-sm tracking-wider">PCI DSS</h4>
+                    <p class="text-xs text-green-500 font-mono mt-1">● READY</p>
                 </div>
             </div>
 
-            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+            <!-- Card 2 -->
+            <div class="reveal-item glass-panel p-6 rounded-xl border border-white/10 hover:border-neon-cyan/50 hover:bg-white/5 transition-all group flex flex-col items-center justify-center gap-4"
+                data-delay="200">
+                <div
+                    class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <i data-lucide="globe"
+                        class="w-6 h-6 text-gray-300 group-hover:text-neon-cyan transition-colors"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white text-sm tracking-wider">HIPAA</h4>
+                    <p class="text-xs text-green-500 font-mono mt-1">● COMPLIANT</p>
+                </div>
+            </div>
+
+            <!-- Card 3 (Highlighted) -->
+            <div class="reveal-item glass-panel p-6 rounded-xl border border-neon-cyan/30 bg-neon-cyan/5 hover:bg-neon-cyan/10 transition-all flex flex-col items-center justify-center gap-4 relative overflow-hidden"
+                data-delay="300">
+                <div class="absolute inset-0 bg-neon-cyan/10 blur-xl"></div>
+                <div class="w-12 h-12 rounded-full bg-neon-cyan/20 flex items-center justify-center relative z-10">
+                    <i data-lucide="award" class="w-6 h-6 text-neon-cyan"></i>
+                </div>
+                <div class="relative z-10">
+                    <h4 class="font-bold text-white text-sm tracking-wider">ISO 27001</h4>
+                    <p class="text-xs text-neon-cyan font-mono mt-1">● CERTIFIED</p>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="reveal-item glass-panel p-6 rounded-xl border border-white/10 hover:border-neon-cyan/50 hover:bg-white/5 transition-all group flex flex-col items-center justify-center gap-4"
+                data-delay="400">
+                <div
+                    class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <i data-lucide="shield-check"
+                        class="w-6 h-6 text-gray-300 group-hover:text-neon-cyan transition-colors"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white text-sm tracking-wider">SOC2 TYPE II</h4>
+                    <p class="text-xs text-green-500 font-mono mt-1">● ACTIVE</p>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="reveal-item glass-panel p-6 rounded-xl border border-white/10 hover:border-neon-cyan/50 hover:bg-white/5 transition-all group flex flex-col items-center justify-center gap-4"
+                data-delay="500">
+                <div
+                    class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <i data-lucide="check-circle"
+                        class="w-6 h-6 text-gray-300 group-hover:text-neon-cyan transition-colors"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white text-sm tracking-wider">GDPR</h4>
+                    <p class="text-xs text-green-500 font-mono mt-1">● COMPLIANT</p>
+                </div>
+            </div>
+
+        </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-12 md:py-20 px-4 md:px-6 relative overflow-hidden bg-black">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-3xl md:text-5xl font-bold mb-4">Voices of <span
+                        class="text-neon-cyan">Trust</span></h2>
+                <p class="text-gray-400">Join the thousands who have already secured their digital future.</p>
+            </div>
+
+            <div class="relative max-w-5xl mx-auto">
+                <!-- Navigation Arrows -->
+                <button id="prevBtn"
+                    class="absolute left-0 top-1/2 -translate-y-1/2 z-20 hidden md:flex items-center justify-center w-12 h-12 rounded-full border border-white/10 bg-black/50 backdrop-blur-md text-white hover:bg-neon-cyan hover:text-black hover:border-neon-cyan transition-all -ml-6 lg:-ml-12 group">
+                    <i data-lucide="arrow-left" class="w-5 h-5 group-hover:-translate-x-1 transition-transform"></i>
+                </button>
+                <button id="nextBtn"
+                    class="absolute right-0 top-1/2 -translate-y-1/2 z-20 hidden md:flex items-center justify-center w-12 h-12 rounded-full border border-white/10 bg-black/50 backdrop-blur-md text-white hover:bg-neon-cyan hover:text-black hover:border-neon-cyan transition-all -mr-6 lg:-mr-12 group">
+                    <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                </button>
+
+                <!-- Scroll Container -->
+                <div id="testimonialTrack"
+                    class="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory scrollbar-hide -mx-4 px-4 md:px-0 scroll-smooth items-center">
+
+                    <!-- Card 1 -->
+                    <div class="testimonial-card min-w-[85vw] md:min-w-[400px] snap-center transition-all duration-500 opacity-50 scale-90"
+                        data-index="0">
+                        <div class="glass-panel p-6 md:p-8 rounded-2xl h-full flex flex-col items-center text-center">
+                            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-neon-purple to-pink-600 p-1 mb-6">
+                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Jessica" alt="User"
+                                    class="w-full h-full rounded-full bg-black">
+                            </div>
+                            <div class="flex gap-1 text-neon-cyan mb-4">
+                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            </div>
+                            <p class="text-lg text-gray-300 italic mb-6">"As a content creator, my data is my life.
+                                DefyAI gives me the peace of mind knowing my intellectual property is safe from leaks."
+                            </p>
+                            <h4 class="font-bold text-white">Jessica M.</h4>
+                            <p class="text-sm text-gray-500">Digital Artist</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 (Initial Center) -->
+                    <div class="testimonial-card min-w-[85vw] md:min-w-[400px] snap-center transition-all duration-500 scale-100 opacity-100 z-10"
+                        data-index="1">
+                        <div
+                            class="glass-panel p-6 md:p-8 rounded-2xl h-full flex flex-col items-center text-center border-neon-cyan/30 border">
+                            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-neon-cyan to-blue-600 p-1 mb-6">
+                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="User"
+                                    class="w-full h-full rounded-full bg-black">
+                            </div>
+                            <div class="flex gap-1 text-neon-cyan mb-4">
+                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            </div>
+                            <p class="text-lg text-gray-300 italic mb-6">"DefyAI completely changed how I think about
+                                security. It's not just an antivirus, it's like having a digital bodyguard that actually
+                                understands me."</p>
+                            <h4 class="font-bold text-white">Felix K.</h4>
+                            <p class="text-sm text-gray-500">Cybersecurity Analyst</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="testimonial-card min-w-[85vw] md:min-w-[400px] snap-center transition-all duration-500 opacity-50 scale-90"
+                        data-index="2">
+                        <div class="glass-panel p-6 md:p-8 rounded-2xl h-full flex flex-col items-center text-center">
+                            <div
+                                class="w-16 h-16 rounded-full bg-gradient-to-br from-green-400 to-emerald-600 p-1 mb-6">
+                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah" alt="User"
+                                    class="w-full h-full rounded-full bg-black">
+                            </div>
+                            <div class="flex gap-1 text-neon-cyan mb-4">
+                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            </div>
+                            <p class="text-lg text-gray-300 italic mb-6">"The 'Zero-touch' configuration is real. I
+                                installed it, and it just worked. No complex settings, just pure protection."</p>
+                            <h4 class="font-bold text-white">Sarah L.</h4>
+                            <p class="text-sm text-gray-500">Tech Entrepreneur</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 (New) -->
+                    <div class="testimonial-card min-w-[85vw] md:min-w-[400px] snap-center transition-all duration-500 opacity-50 scale-90"
+                        data-index="3">
+                        <div class="glass-panel p-6 md:p-8 rounded-2xl h-full flex flex-col items-center text-center">
+                            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-orange-400 to-red-600 p-1 mb-6">
+                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=David" alt="User"
+                                    class="w-full h-full rounded-full bg-black">
+                            </div>
+                            <div class="flex gap-1 text-neon-cyan mb-4">
+                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            </div>
+                            <p class="text-lg text-gray-300 italic mb-6">"Finally, a security solution that doesn't slow
+                                down
+                                my workflow. It's efficient, silent, and incredibly effective."</p>
+                            <h4 class="font-bold text-white">David R.</h4>
+                            <p class="text-sm text-gray-500">Software Engineer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <footer id="contact" class="pt-12 md:pt-20 pb-10 px-4 md:px-6 relative overflow-hidden">
+        <!-- Footer Background Glow -->
+        <div
+            class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-3xl h-64 bg-neon-cyan/10 blur-[100px] pointer-events-none">
+        </div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center mb-12">
+                <h2 class="font-display text-4xl md:text-6xl font-bold mb-4">Ready to Defy Risks?</h2>
+                <p class="text-gray-400">Get in touch with us or send a direct query.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8 mb-16">
+                <!-- Contact Info -->
+                <div class="glass-panel p-6 md:p-8 rounded-2xl flex flex-col justify-center h-full">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center">
+                            <i data-lucide="user" class="text-white w-8 h-8"></i>
+                        </div>
+                        <div class="text-left">
+                            <p class="text-xs text-neon-cyan uppercase font-bold tracking-wider mb-1">Contact Founder
+                            </p>
+                            <h4 class="text-2xl font-bold font-display">Gokul Mathukmalli</h4>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6 text-left">
+                        <a href="tel:9699172609"
+                            class="flex items-center gap-4 text-gray-300 hover:text-neon-cyan transition-colors group p-4 rounded-xl hover:bg-white/5 border border-transparent hover:border-white/5">
+                            <i data-lucide="phone"
+                                class="w-6 h-6 group-hover:rotate-12 transition-transform text-neon-purple"></i>
+                            <span class="text-lg font-medium">9699172609</span>
+                        </a>
+                        <a href="mailto:defyaicompany@gmail.com"
+                            class="flex items-center gap-4 text-gray-300 hover:text-neon-cyan transition-colors group p-4 rounded-xl hover:bg-white/5 border border-transparent hover:border-white/5">
+                            <i data-lucide="mail"
+                                class="w-6 h-6 group-hover:scale-110 transition-transform text-neon-purple"></i>
+                            <span class="text-lg font-medium">defyaicompany@gmail.com</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Query Form -->
+                <div class="glass-panel p-6 md:p-8 rounded-2xl">
+                    <h3 class="font-display text-2xl font-bold mb-6 text-left">Send a Query</h3>
+                    <form class="space-y-4 text-left">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <!-- Name -->
+                            <div class="space-y-2">
+                                <label for="name" class="text-sm font-medium text-gray-400">Name</label>
+                                <input type="text" id="name" name="name" placeholder="John Doe"
+                                    class="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-all">
+                            </div>
+                            <!-- Email -->
+                            <div class="space-y-2">
+                                <label for="email" class="text-sm font-medium text-gray-400">Email</label>
+                                <input type="email" id="email" name="email" placeholder="john@example.com"
+                                    class="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-all">
+                            </div>
+                        </div>
+
+                        <!-- Type of Question -->
+                        <div class="space-y-2">
+                            <label for="type" class="text-sm font-medium text-gray-400">Type of Question</label>
+                            <div class="relative">
+                                <select id="type" name="type"
+                                    class="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-all appearance-none cursor-pointer">
+                                    <option value="" disabled selected>Select a topic...</option>
+                                    <option value="general" class="bg-neutral-900">General Inquiry</option>
+                                    <option value="support" class="bg-neutral-900">Technical Support</option>
+                                    <option value="partnership" class="bg-neutral-900">Partnership</option>
+                                    <option value="other" class="bg-neutral-900">Other</option>
+                                </select>
+                                <i data-lucide="chevron-down"
+                                    class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none"></i>
+                            </div>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="space-y-2">
+                            <label for="description" class="text-sm font-medium text-gray-400">Description</label>
+                            <textarea id="description" name="description" rows="4"
+                                placeholder="How can we help you today?"
+                                class="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-all resize-none"></textarea>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit"
+                            class="w-full bg-neon-cyan text-black font-bold py-3 rounded-lg hover:bg-cyan-400 transition-colors flex items-center justify-center gap-2 group">
+                            <span>Submit Query</span>
+                            <i data-lucide="send" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div
+                class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
                 <p>&copy; 2024 DefyAI Security. All rights reserved.</p>
                 <div class="flex gap-6 mt-4 md:mt-0">
                     <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
@@ -442,7 +989,7 @@
 
         // Hover effect for cursor
         const interactiveElements = document.querySelectorAll('a, button, .cursor-pointer');
-        
+
         interactiveElements.forEach(el => {
             el.addEventListener('mouseenter', () => {
                 cursorOutline.style.width = '60px';
@@ -471,9 +1018,182 @@
         }, observerOptions);
 
         document.querySelectorAll('section > div').forEach(el => {
-            el.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
-            observer.observe(el);
+            if (!el.classList.contains('reveal-item')) {
+                el.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
+                observer.observe(el);
+            }
         });
+
+        // Staggered Animation Observer
+        const staggerObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const delay = entry.target.getAttribute('data-delay') || 0;
+                    setTimeout(() => {
+                        entry.target.classList.remove('opacity-0', 'translate-y-10');
+                        entry.target.classList.add('opacity-100', 'translate-y-0');
+                    }, delay);
+                    staggerObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal-item').forEach(el => {
+            el.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-10');
+            staggerObserver.observe(el);
+        });
+
+        // Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        let isMenuOpen = false;
+
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+        function toggleMobileMenu() {
+            isMenuOpen = !isMenuOpen;
+            const icon = mobileMenuBtn.querySelector('i');
+
+            if (isMenuOpen) {
+                mobileMenu.classList.remove('translate-x-full');
+                // Change icon to X
+                icon.setAttribute('data-lucide', 'x');
+            } else {
+                mobileMenu.classList.add('translate-x-full');
+                // Change icon back to Menu
+                icon.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons();
+        }
+
+        // Testimonial Carousel Logic (Infinite Loop)
+        const track = document.getElementById('testimonialTrack');
+        const originalCards = Array.from(document.querySelectorAll('.testimonial-card'));
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        let autoPlayInterval;
+        let isTransitioning = false;
+        let allCards = [];
+
+        // Clone Functionality
+        function setupInfiniteScroll() {
+            // Append clones to end
+            originalCards.forEach(card => {
+                const clone = card.cloneNode(true);
+                clone.classList.add('clone-end');
+                track.appendChild(clone);
+            });
+
+            // Prepend clones to start
+            [...originalCards].reverse().forEach(card => {
+                const clone = card.cloneNode(true);
+                clone.classList.add('clone-start');
+                track.insertBefore(clone, track.firstChild);
+            });
+
+            allCards = document.querySelectorAll('.testimonial-card');
+
+            // Initial center position (skip first set of clones)
+            setTimeout(() => {
+                const centerIndex = originalCards.length;
+                const centerCard = allCards[centerIndex];
+                if (centerCard) {
+                    const offset = centerCard.offsetLeft - (track.clientWidth - centerCard.offsetWidth) / 2;
+                    track.scrollLeft = offset;
+                }
+                updateHighlight();
+            }, 100);
+        }
+
+        setupInfiniteScroll();
+
+        // Scroll Event
+        track.addEventListener('scroll', () => {
+            updateHighlight();
+            checkInfiniteScroll();
+        });
+
+        function checkInfiniteScroll() {
+            if (isTransitioning || originalCards.length === 0) return;
+
+            const cardWidth = originalCards[0].offsetWidth + 24; // Width + gap
+            const totalOriginalWidth = cardWidth * originalCards.length;
+
+            if (track.scrollLeft >= totalOriginalWidth * 2 - track.clientWidth) {
+                track.style.scrollBehavior = 'auto';
+                track.scrollLeft = track.scrollLeft - totalOriginalWidth;
+                track.style.scrollBehavior = 'smooth';
+            }
+            else if (track.scrollLeft <= cardWidth) {
+                track.style.scrollBehavior = 'auto';
+                track.scrollLeft = track.scrollLeft + totalOriginalWidth;
+                track.style.scrollBehavior = 'smooth';
+            }
+        }
+
+        // Navigation Buttons
+        prevBtn.addEventListener('click', () => {
+            scrollCarousel(-1);
+            resetAutoPlay();
+        });
+        nextBtn.addEventListener('click', () => {
+            scrollCarousel(1);
+            resetAutoPlay();
+        });
+
+        // Auto Play Logic
+        function startAutoPlay() {
+            clearInterval(autoPlayInterval);
+            autoPlayInterval = setInterval(() => {
+                scrollCarousel(1);
+            }, 3000);
+        }
+
+        function resetAutoPlay() {
+            clearInterval(autoPlayInterval);
+            startAutoPlay();
+        }
+
+        function scrollCarousel(direction) {
+            if (originalCards.length === 0) return;
+            const cardWidth = originalCards[0].offsetWidth + 24; // including gap
+            track.scrollBy({ left: cardWidth * direction, behavior: 'smooth' });
+        }
+
+        // Pause on Hover
+        track.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
+        track.addEventListener('mouseleave', startAutoPlay);
+
+        // Start Auto Play
+        startAutoPlay();
+
+        function updateHighlight() {
+            const trackCenter = track.getBoundingClientRect().left + track.offsetWidth / 2;
+
+            // Use allCards (including clones) to update styles
+            if (allCards.length === 0) return;
+
+            allCards.forEach(card => {
+                const cardCenter = card.getBoundingClientRect().left + card.offsetWidth / 2;
+                const distance = Math.abs(trackCenter - cardCenter);
+                const maxDistance = card.offsetWidth / 2;
+
+                const panel = card.querySelector('.glass-panel');
+
+                if (distance < maxDistance) {
+                    // Active Card
+                    card.classList.remove('opacity-50', 'scale-90');
+                    card.classList.add('scale-100', 'opacity-100', 'z-10');
+                    if (panel) panel.classList.add('border-neon-cyan/30', 'border');
+                } else {
+                    // Inactive Card
+                    card.classList.add('opacity-50', 'scale-90');
+                    card.classList.remove('scale-100', 'opacity-100', 'z-10');
+                    if (panel) panel.classList.remove('border-neon-cyan/30', 'border');
+                }
+            });
+        }
     </script>
 </body>
+
 </html>
