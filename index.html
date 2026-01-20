@@ -123,12 +123,14 @@
         .text-gradient {
             background: linear-gradient(to right, #ffffff, #94a3b8);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .text-gradient-accent {
             background: linear-gradient(135deg, #00f3ff 0%, #bc13fe 100%);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
@@ -203,7 +205,7 @@
     <div class="noise-overlay"></div>
 
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 px-4 py-4 md:px-6 md:py-6 flex justify-center">
+    <nav class="fixed top-0 w-full z-50 px-6 py-4 md:py-6 flex justify-center">
         <div
             class="w-full max-w-7xl mx-auto flex justify-between items-center glass-panel rounded-full px-5 py-3 md:px-8 md:py-4">
             <a href="#" class="font-display font-bold text-2xl tracking-tighter hover:text-neon-cyan transition-colors">
@@ -228,29 +230,33 @@
             </button>
         </div>
 
-        <!-- Mobile Menu Overlay -->
+        <!-- Mobile Menu Dropdown -->
         <div id="mobileMenu"
-            class="fixed inset-0 bg-black/95 backdrop-blur-xl z-40 translate-x-full transition-transform duration-500 flex flex-col items-center justify-center gap-8 md:hidden">
-            <a href="#problem" class="text-2xl font-display font-bold hover:text-neon-cyan transition-colors"
+            class="absolute top-full left-4 right-4 mt-2 glass-panel p-6 rounded-3xl z-40 opacity-0 pointer-events-none -translate-y-4 transition-all duration-300 md:hidden flex flex-col gap-6 shadow-2xl border border-white/10">
+            <a href="#problem"
+                class="text-lg font-medium hover:text-neon-cyan transition-colors py-2 border-b border-white/5"
                 onclick="toggleMobileMenu()">The Threat</a>
-            <a href="#solution" class="text-2xl font-display font-bold hover:text-neon-cyan transition-colors"
+            <a href="#solution"
+                class="text-lg font-medium hover:text-neon-cyan transition-colors py-2 border-b border-white/5"
                 onclick="toggleMobileMenu()">The Shield</a>
-            <a href="#campaign" class="text-2xl font-display font-bold hover:text-neon-cyan transition-colors"
+            <a href="#campaign"
+                class="text-lg font-medium hover:text-neon-cyan transition-colors py-2 border-b border-white/5"
                 onclick="toggleMobileMenu()">Vision</a>
-            <a href="#compliance" class="text-2xl font-display font-bold hover:text-neon-cyan transition-colors"
+            <a href="#compliance"
+                class="text-lg font-medium hover:text-neon-cyan transition-colors py-2 border-b border-white/5"
                 onclick="toggleMobileMenu()">Trust</a>
             <a href="#contact"
-                class="bg-neon-cyan text-black font-bold px-8 py-3 rounded-full hover:scale-105 transition-transform"
+                class="bg-neon-cyan text-black font-bold px-6 py-4 rounded-2xl text-center hover:scale-[1.02] transition-transform"
                 onclick="toggleMobileMenu()">Get Protected</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <main class="relative pt-32 md:pt-40 pb-12 md:pb-20 px-4 md:px-6 w-full overflow-x-hidden">
+    <main class="relative pt-32 md:pt-40 pb-12 md:pb-20 px-6 w-full overflow-x-hidden">
         <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center">
 
             <!-- Hero Text -->
-            <div class="order-2 lg:order-1 relative z-10">
+            <div class="order-2 lg:order-1 relative z-10 text-center lg:text-left">
                 <div
                     class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neon-cyan/30 bg-neon-cyan/5 text-neon-cyan text-xs font-bold mb-6 tracking-wide uppercase">
                     <span class="w-2 h-2 rounded-full bg-neon-cyan animate-pulse"></span>
@@ -325,7 +331,7 @@
 
     <!-- Problem vs Solution Section (Bento Grid) -->
     <!-- Problem vs Solution Section (Bento Grid) -->
-    <section id="problem" class="py-12 md:py-20 px-4 md:px-6 relative z-10">
+    <section id="problem" class="py-12 md:py-20 px-6 relative z-10">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="font-display text-3xl md:text-5xl font-bold mb-4">The Digital <span
@@ -422,7 +428,7 @@
 
     <!-- Marketing Campaign Showcase (Simulated AI Art) -->
     <!-- Marketing Campaign Showcase (Simulated AI Art) -->
-    <section id="campaign" class="py-12 md:py-20 px-4 md:px-6 bg-gradient-to-b from-transparent to-black/80">
+    <section id="campaign" class="py-12 md:py-20 px-6 bg-gradient-to-b from-transparent to-black/80">
         <div class="max-w-7xl mx-auto">
             <h2 class="font-display text-3xl font-bold mb-10 border-l-4 border-white pl-4">Defy Expected. <span
                     class="text-gray-500 font-normal">Our Vision.</span></h2>
@@ -561,182 +567,162 @@
 
         </div>
 
-        <!-- Certification Grid (Staggered Animation) -->
-        <!-- Mobile Marquee (Visible only on mobile) -->
-        <div class="md:hidden w-full overflow-hidden pb-8 relative">
+        <!-- Unified Compliance Marquee (Mobile & Desktop) -->
+        <div class="w-full overflow-hidden pb-12 md:pb-20 relative px-0">
             <div
-                class="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none">
+                class="absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none">
             </div>
             <div
-                class="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none">
+                class="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none">
             </div>
 
-            <div class="flex w-max animate-marquee gap-4">
+            <div class="flex w-max animate-marquee gap-6 md:gap-8">
                 <!-- Original Set -->
                 <div
-                    class="glass-panel p-4 rounded-xl w-[160px] flex-shrink-0 flex flex-col items-center justify-center gap-3 border border-white/10">
-                    <i data-lucide="lock" class="w-6 h-6 text-neon-cyan"></i>
-                    <div>
-                        <h4 class="font-bold text-white text-xs tracking-wider">PCI DSS</h4>
-                        <p class="text-[10px] text-green-500 font-mono mt-1">● READY</p>
+                    class="glass-panel p-6 md:p-10 rounded-2xl w-[220px] md:w-[350px] flex-shrink-0 flex flex-col items-center justify-center gap-4 border border-white/10 hover:border-neon-cyan/50 hover:bg-white/5 transition-all group">
+                    <div
+                        class="w-14 h-14 md:w-20 md:h-20 rounded-full bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="lock"
+                            class="w-7 h-7 md:w-10 md:h-10 text-gray-300 group-hover:text-neon-cyan transition-colors"></i>
+                    </div>
+                    <div class="text-center">
+                        <h4 class="font-bold text-white text-base md:text-xl tracking-wider">PCI DSS</h4>
+                        <p class="text-xs text-green-500 font-mono mt-2 uppercase">● READY</p>
                     </div>
                 </div>
                 <div
-                    class="glass-panel p-4 rounded-xl w-[160px] flex-shrink-0 flex flex-col items-center justify-center gap-3 border border-white/10">
-                    <i data-lucide="globe" class="w-6 h-6 text-neon-cyan"></i>
-                    <div>
-                        <h4 class="font-bold text-white text-xs tracking-wider">HIPAA</h4>
-                        <p class="text-[10px] text-green-500 font-mono mt-1">● COMPLIANT</p>
+                    class="glass-panel p-6 md:p-10 rounded-2xl w-[220px] md:w-[350px] flex-shrink-0 flex flex-col items-center justify-center gap-4 border border-white/10 hover:border-neon-cyan/50 hover:bg-white/5 transition-all group">
+                    <div
+                        class="w-14 h-14 md:w-20 md:h-20 rounded-full bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="globe"
+                            class="w-7 h-7 md:w-10 md:h-10 text-gray-300 group-hover:text-neon-cyan transition-colors"></i>
+                    </div>
+                    <div class="text-center">
+                        <h4 class="font-bold text-white text-base md:text-xl tracking-wider">HIPAA</h4>
+                        <p class="text-xs text-green-500 font-mono mt-2 uppercase">● COMPLIANT</p>
+                    </div>
+                </div>
+                <!-- ISO 27001 -->
+                <div
+                    class="glass-panel p-6 md:p-10 rounded-2xl w-[220px] md:w-[350px] flex-shrink-0 flex flex-col items-center justify-center gap-4 border border-neon-cyan/30 bg-neon-cyan/5 hover:bg-neon-cyan/10 transition-all relative overflow-hidden group">
+                    <div
+                        class="absolute inset-0 bg-neon-cyan/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <div
+                        class="w-14 h-14 md:w-20 md:h-20 rounded-full bg-neon-cyan/20 flex items-center justify-center relative z-10 group-hover:scale-110 transition-transform">
+                        <i data-lucide="award" class="w-7 h-7 md:w-10 md:h-10 text-neon-cyan"></i>
+                    </div>
+                    <div class="relative z-10 text-center">
+                        <h4 class="font-bold text-white text-base md:text-xl tracking-wider">ISO 27001</h4>
+                        <p class="text-xs text-neon-cyan font-mono mt-2 uppercase">● CERTIFIED</p>
                     </div>
                 </div>
                 <div
-                    class="glass-panel p-4 rounded-xl w-[160px] flex-shrink-0 flex flex-col items-center justify-center gap-3 border border-neon-cyan/30 bg-neon-cyan/5">
-                    <i data-lucide="award" class="w-6 h-6 text-neon-cyan"></i>
-                    <div>
-                        <h4 class="font-bold text-white text-xs tracking-wider">ISO 27001</h4>
-                        <p class="text-[10px] text-neon-cyan font-mono mt-1">● CERTIFIED</p>
+                    class="glass-panel p-6 md:p-10 rounded-2xl w-[220px] md:w-[350px] flex-shrink-0 flex flex-col items-center justify-center gap-4 border border-white/10 hover:border-neon-cyan/50 hover:bg-white/5 transition-all group">
+                    <div
+                        class="w-14 h-14 md:w-20 md:h-20 rounded-full bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="shield-check"
+                            class="w-7 h-7 md:w-10 md:h-10 text-gray-300 group-hover:text-neon-cyan transition-colors"></i>
+                    </div>
+                    <div class="text-center">
+                        <h4 class="font-bold text-white text-base md:text-xl tracking-wider">SOC2 TYPE II</h4>
+                        <p class="text-xs text-green-500 font-mono mt-1 uppercase">● ACTIVE</p>
                     </div>
                 </div>
                 <div
-                    class="glass-panel p-4 rounded-xl w-[160px] flex-shrink-0 flex flex-col items-center justify-center gap-3 border border-white/10">
-                    <i data-lucide="shield-check" class="w-6 h-6 text-neon-cyan"></i>
-                    <div>
-                        <h4 class="font-bold text-white text-xs tracking-wider">SOC2 TYPE II</h4>
-                        <p class="text-[10px] text-green-500 font-mono mt-1">● ACTIVE</p>
+                    class="glass-panel p-6 md:p-10 rounded-2xl w-[220px] md:w-[350px] flex-shrink-0 flex flex-col items-center justify-center gap-4 border border-white/10 hover:border-neon-cyan/50 hover:bg-white/5 transition-all group">
+                    <div
+                        class="w-14 h-14 md:w-20 md:h-20 rounded-full bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="check-circle"
+                            class="w-7 h-7 md:w-10 md:h-10 text-gray-300 group-hover:text-neon-cyan transition-colors"></i>
                     </div>
-                </div>
-                <div
-                    class="glass-panel p-4 rounded-xl w-[160px] flex-shrink-0 flex flex-col items-center justify-center gap-3 border border-white/10">
-                    <i data-lucide="check-circle" class="w-6 h-6 text-neon-cyan"></i>
-                    <div>
-                        <h4 class="font-bold text-white text-xs tracking-wider">GDPR</h4>
-                        <p class="text-[10px] text-green-500 font-mono mt-1">● COMPLIANT</p>
+                    <div class="text-center">
+                        <h4 class="font-bold text-white text-base md:text-xl tracking-wider">GDPR</h4>
+                        <p class="text-xs text-green-500 font-mono mt-2 uppercase">● COMPLIANT</p>
                     </div>
                 </div>
 
-                <!-- Duplicate Set for Loop -->
+                <!-- Duplicate Set -->
                 <div
-                    class="glass-panel p-4 rounded-xl w-[160px] flex-shrink-0 flex flex-col items-center justify-center gap-3 border border-white/10">
-                    <i data-lucide="lock" class="w-6 h-6 text-neon-cyan"></i>
-                    <div>
-                        <h4 class="font-bold text-white text-xs tracking-wider">PCI DSS</h4>
-                        <p class="text-[10px] text-green-500 font-mono mt-1">● READY</p>
+                    class="glass-panel p-6 md:p-10 rounded-2xl w-[220px] md:w-[350px] flex-shrink-0 flex flex-col items-center justify-center gap-4 border border-white/10 hover:border-neon-cyan/50 hover:bg-white/5 transition-all group">
+                    <div
+                        class="w-14 h-14 md:w-20 md:h-20 rounded-full bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="lock"
+                            class="w-7 h-7 md:w-10 md:h-10 text-gray-300 group-hover:text-neon-cyan transition-colors"></i>
+                    </div>
+                    <div class="text-center">
+                        <h4 class="font-bold text-white text-base md:text-xl tracking-wider">PCI DSS</h4>
+                        <p class="text-xs text-green-500 font-mono mt-2 uppercase">● READY</p>
                     </div>
                 </div>
                 <div
-                    class="glass-panel p-4 rounded-xl w-[160px] flex-shrink-0 flex flex-col items-center justify-center gap-3 border border-white/10">
-                    <i data-lucide="globe" class="w-6 h-6 text-neon-cyan"></i>
-                    <div>
-                        <h4 class="font-bold text-white text-xs tracking-wider">HIPAA</h4>
-                        <p class="text-[10px] text-green-500 font-mono mt-1">● COMPLIANT</p>
+                    class="glass-panel p-6 md:p-10 rounded-2xl w-[220px] md:w-[350px] flex-shrink-0 flex flex-col items-center justify-center gap-4 border border-white/10 hover:border-neon-cyan/50 hover:bg-white/5 transition-all group">
+                    <div
+                        class="w-14 h-14 md:w-20 md:h-20 rounded-full bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="globe"
+                            class="w-7 h-7 md:w-10 md:h-10 text-gray-300 group-hover:text-neon-cyan transition-colors"></i>
+                    </div>
+                    <div class="text-center">
+                        <h4 class="font-bold text-white text-base md:text-xl tracking-wider">HIPAA</h4>
+                        <p class="text-xs text-green-500 font-mono mt-2 uppercase">● COMPLIANT</p>
                     </div>
                 </div>
                 <div
-                    class="glass-panel p-4 rounded-xl w-[160px] flex-shrink-0 flex flex-col items-center justify-center gap-3 border border-neon-cyan/30 bg-neon-cyan/5">
-                    <i data-lucide="award" class="w-6 h-6 text-neon-cyan"></i>
-                    <div>
-                        <h4 class="font-bold text-white text-xs tracking-wider">ISO 27001</h4>
-                        <p class="text-[10px] text-neon-cyan font-mono mt-1">● CERTIFIED</p>
+                    class="glass-panel p-6 md:p-10 rounded-2xl w-[220px] md:w-[350px] flex-shrink-0 flex flex-col items-center justify-center gap-4 border border-neon-cyan/30 bg-neon-cyan/5 hover:bg-neon-cyan/10 transition-all relative overflow-hidden group">
+                    <div
+                        class="absolute inset-0 bg-neon-cyan/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity">
+                    </div>
+                    <div
+                        class="w-14 h-14 md:w-20 md:h-20 rounded-full bg-neon-cyan/20 flex items-center justify-center relative z-10 group-hover:scale-110 transition-transform">
+                        <i data-lucide="award" class="w-7 h-7 md:w-10 md:h-10 text-neon-cyan"></i>
+                    </div>
+                    <div class="relative z-10 text-center">
+                        <h4 class="font-bold text-white text-base md:text-xl tracking-wider">ISO 27001</h4>
+                        <p class="text-xs text-neon-cyan font-mono mt-2 uppercase">● CERTIFIED</p>
                     </div>
                 </div>
                 <div
-                    class="glass-panel p-4 rounded-xl w-[160px] flex-shrink-0 flex flex-col items-center justify-center gap-3 border border-white/10">
-                    <i data-lucide="shield-check" class="w-6 h-6 text-neon-cyan"></i>
-                    <div>
-                        <h4 class="font-bold text-white text-xs tracking-wider">SOC2 TYPE II</h4>
-                        <p class="text-[10px] text-green-500 font-mono mt-1">● ACTIVE</p>
+                    class="glass-panel p-6 md:p-10 rounded-2xl w-[220px] md:w-[350px] flex-shrink-0 flex flex-col items-center justify-center gap-4 border border-white/10 hover:border-neon-cyan/50 hover:bg-white/5 transition-all group">
+                    <div
+                        class="w-14 h-14 md:w-20 md:h-20 rounded-full bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="shield-check"
+                            class="w-7 h-7 md:w-10 md:h-10 text-gray-300 group-hover:text-neon-cyan transition-colors"></i>
+                    </div>
+                    <div class="text-center">
+                        <h4 class="font-bold text-white text-base md:text-xl tracking-wider">SOC2 TYPE II</h4>
+                        <p class="text-xs text-green-500 font-mono mt-1 uppercase">● ACTIVE</p>
                     </div>
                 </div>
                 <div
-                    class="glass-panel p-4 rounded-xl w-[160px] flex-shrink-0 flex flex-col items-center justify-center gap-3 border border-white/10">
-                    <i data-lucide="check-circle" class="w-6 h-6 text-neon-cyan"></i>
-                    <div>
-                        <h4 class="font-bold text-white text-xs tracking-wider">GDPR</h4>
-                        <p class="text-[10px] text-green-500 font-mono mt-1">● COMPLIANT</p>
+                    class="glass-panel p-6 md:p-10 rounded-2xl w-[220px] md:w-[350px] flex-shrink-0 flex flex-col items-center justify-center gap-4 border border-white/10 hover:border-neon-cyan/50 hover:bg-white/5 transition-all group">
+                    <div
+                        class="w-14 h-14 md:w-20 md:h-20 rounded-full bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="check-circle"
+                            class="w-7 h-7 md:w-10 md:h-10 text-gray-300 group-hover:text-neon-cyan transition-colors"></i>
+                    </div>
+                    <div class="text-center">
+                        <h4 class="font-bold text-white text-base md:text-xl tracking-wider">GDPR</h4>
+                        <p class="text-xs text-green-500 font-mono mt-2 uppercase">● COMPLIANT</p>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Desktop Grid (Hidden on mobile) -->
-        <div class="hidden md:grid grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6 stagger-grid justify-center px-4 md:px-0">
-
-            <!-- Card 1 -->
-            <div class="reveal-item glass-panel p-6 rounded-xl border border-white/10 hover:border-neon-cyan/50 hover:bg-white/5 transition-all group flex flex-col items-center justify-center gap-4"
-                data-delay="100">
-                <div
-                    class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <i data-lucide="lock"
-                        class="w-6 h-6 text-gray-300 group-hover:text-neon-cyan transition-colors"></i>
-                </div>
-                <div>
-                    <h4 class="font-bold text-white text-sm tracking-wider">PCI DSS</h4>
-                    <p class="text-xs text-green-500 font-mono mt-1">● READY</p>
-                </div>
-            </div>
-
-            <!-- Card 2 -->
-            <div class="reveal-item glass-panel p-6 rounded-xl border border-white/10 hover:border-neon-cyan/50 hover:bg-white/5 transition-all group flex flex-col items-center justify-center gap-4"
-                data-delay="200">
-                <div
-                    class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <i data-lucide="globe"
-                        class="w-6 h-6 text-gray-300 group-hover:text-neon-cyan transition-colors"></i>
-                </div>
-                <div>
-                    <h4 class="font-bold text-white text-sm tracking-wider">HIPAA</h4>
-                    <p class="text-xs text-green-500 font-mono mt-1">● COMPLIANT</p>
-                </div>
-            </div>
-
-            <!-- Card 3 (Highlighted) -->
-            <div class="reveal-item glass-panel p-6 rounded-xl border border-neon-cyan/30 bg-neon-cyan/5 hover:bg-neon-cyan/10 transition-all flex flex-col items-center justify-center gap-4 relative overflow-hidden"
-                data-delay="300">
-                <div class="absolute inset-0 bg-neon-cyan/10 blur-xl"></div>
-                <div class="w-12 h-12 rounded-full bg-neon-cyan/20 flex items-center justify-center relative z-10">
-                    <i data-lucide="award" class="w-6 h-6 text-neon-cyan"></i>
-                </div>
-                <div class="relative z-10">
-                    <h4 class="font-bold text-white text-sm tracking-wider">ISO 27001</h4>
-                    <p class="text-xs text-neon-cyan font-mono mt-1">● CERTIFIED</p>
-                </div>
-            </div>
-
-            <!-- Card 4 -->
-            <div class="reveal-item glass-panel p-6 rounded-xl border border-white/10 hover:border-neon-cyan/50 hover:bg-white/5 transition-all group flex flex-col items-center justify-center gap-4"
-                data-delay="400">
-                <div
-                    class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <i data-lucide="shield-check"
-                        class="w-6 h-6 text-gray-300 group-hover:text-neon-cyan transition-colors"></i>
-                </div>
-                <div>
-                    <h4 class="font-bold text-white text-sm tracking-wider">SOC2 TYPE II</h4>
-                    <p class="text-xs text-green-500 font-mono mt-1">● ACTIVE</p>
-                </div>
-            </div>
-
-            <!-- Card 5 -->
-            <div class="reveal-item glass-panel p-6 rounded-xl border border-white/10 hover:border-neon-cyan/50 hover:bg-white/5 transition-all group flex flex-col items-center justify-center gap-4"
-                data-delay="500">
-                <div
-                    class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <i data-lucide="check-circle"
-                        class="w-6 h-6 text-gray-300 group-hover:text-neon-cyan transition-colors"></i>
-                </div>
-                <div>
-                    <h4 class="font-bold text-white text-sm tracking-wider">GDPR</h4>
-                    <p class="text-xs text-green-500 font-mono mt-1">● COMPLIANT</p>
-                </div>
-            </div>
-
         </div>
         </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section id="testimonials" class="py-12 md:py-20 px-4 md:px-6 relative overflow-hidden bg-black">
-        <div class="max-w-7xl mx-auto">
+    <section id="testimonials" class="py-12 md:py-20 px-6 relative overflow-hidden bg-black">
+        <!-- Background Mesh Decoration (Visible on All Devices) -->
+        <div class="absolute inset-x-0 top-0 h-full w-full pointer-events-none z-0">
+            <div
+                class="absolute top-1/2 left-1/4 -translate-y-1/2 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-neon-cyan/10 blur-[100px] md:blur-[150px] rounded-full opacity-60">
+            </div>
+            <div
+                class="absolute top-1/2 right-1/4 -translate-y-1/2 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-neon-purple/10 blur-[100px] md:blur-[150px] rounded-full opacity-60">
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
             <div class="text-center mb-16">
                 <h2 class="font-display text-3xl md:text-5xl font-bold mb-4">Voices of <span
                         class="text-neon-cyan">Trust</span></h2>
@@ -761,7 +747,8 @@
                     <!-- Card 1 -->
                     <div class="testimonial-card min-w-[85vw] md:min-w-[400px] snap-center transition-all duration-500 opacity-50 scale-90"
                         data-index="0">
-                        <div class="glass-panel p-6 md:p-8 rounded-2xl h-full flex flex-col items-center text-center">
+                        <div
+                            class="bg-white/[0.03] backdrop-blur-xl border border-white/10 p-6 md:p-8 rounded-2xl h-full flex flex-col items-center text-center shadow-2xl">
                             <div class="w-16 h-16 rounded-full bg-gradient-to-br from-neon-purple to-pink-600 p-1 mb-6">
                                 <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Jessica" alt="User"
                                     class="w-full h-full rounded-full bg-black">
@@ -785,7 +772,7 @@
                     <div class="testimonial-card min-w-[85vw] md:min-w-[400px] snap-center transition-all duration-500 scale-100 opacity-100 z-10"
                         data-index="1">
                         <div
-                            class="glass-panel p-6 md:p-8 rounded-2xl h-full flex flex-col items-center text-center border-neon-cyan/30 border">
+                            class="bg-white/[0.05] backdrop-blur-2xl border border-neon-cyan/40 p-6 md:p-8 rounded-2xl h-full flex flex-col items-center text-center shadow-[0_0_30px_rgba(0,243,255,0.1)]">
                             <div class="w-16 h-16 rounded-full bg-gradient-to-br from-neon-cyan to-blue-600 p-1 mb-6">
                                 <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="User"
                                     class="w-full h-full rounded-full bg-black">
@@ -808,7 +795,8 @@
                     <!-- Card 3 -->
                     <div class="testimonial-card min-w-[85vw] md:min-w-[400px] snap-center transition-all duration-500 opacity-50 scale-90"
                         data-index="2">
-                        <div class="glass-panel p-6 md:p-8 rounded-2xl h-full flex flex-col items-center text-center">
+                        <div
+                            class="bg-white/[0.03] backdrop-blur-xl border border-white/10 p-6 md:p-8 rounded-2xl h-full flex flex-col items-center text-center shadow-2xl">
                             <div
                                 class="w-16 h-16 rounded-full bg-gradient-to-br from-green-400 to-emerald-600 p-1 mb-6">
                                 <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah" alt="User"
@@ -831,7 +819,8 @@
                     <!-- Card 4 (New) -->
                     <div class="testimonial-card min-w-[85vw] md:min-w-[400px] snap-center transition-all duration-500 opacity-50 scale-90"
                         data-index="3">
-                        <div class="glass-panel p-6 md:p-8 rounded-2xl h-full flex flex-col items-center text-center">
+                        <div
+                            class="bg-white/[0.03] backdrop-blur-xl border border-white/10 p-6 md:p-8 rounded-2xl h-full flex flex-col items-center text-center shadow-2xl">
                             <div class="w-16 h-16 rounded-full bg-gradient-to-br from-orange-400 to-red-600 p-1 mb-6">
                                 <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=David" alt="User"
                                     class="w-full h-full rounded-full bg-black">
@@ -856,7 +845,7 @@
     </section>
 
 
-    <footer id="contact" class="pt-12 md:pt-20 pb-10 px-4 md:px-6 relative overflow-hidden">
+    <footer id="contact" class="pt-12 md:pt-20 pb-10 px-6 relative overflow-hidden">
         <!-- Footer Background Glow -->
         <div
             class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-3xl h-64 bg-neon-cyan/10 blur-[100px] pointer-events-none">
@@ -870,30 +859,32 @@
 
             <div class="grid lg:grid-cols-2 gap-8 mb-16">
                 <!-- Contact Info -->
-                <div class="glass-panel p-6 md:p-8 rounded-2xl flex flex-col justify-center h-full">
-                    <div class="flex items-center gap-4 mb-8">
-                        <div class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center">
+                <div
+                    class="glass-panel p-6 md:p-8 rounded-2xl flex flex-col justify-center items-center sm:items-start h-full text-center sm:text-left">
+                    <div class="flex flex-col sm:flex-row items-center gap-4 mb-8">
+                        <div class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0">
                             <i data-lucide="user" class="text-white w-8 h-8"></i>
                         </div>
-                        <div class="text-left">
+                        <div>
                             <p class="text-xs text-neon-cyan uppercase font-bold tracking-wider mb-1">Contact Founder
                             </p>
                             <h4 class="text-2xl font-bold font-display">Gokul Mathukmalli</h4>
                         </div>
                     </div>
 
-                    <div class="space-y-6 text-left">
+                    <div class="space-y-6 w-full">
                         <a href="tel:9699172609"
-                            class="flex items-center gap-4 text-gray-300 hover:text-neon-cyan transition-colors group p-4 rounded-xl hover:bg-white/5 border border-transparent hover:border-white/5">
+                            class="flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-4 text-gray-300 hover:text-neon-cyan transition-colors group p-4 rounded-xl hover:bg-white/5 border border-transparent hover:border-white/5">
                             <i data-lucide="phone"
                                 class="w-6 h-6 group-hover:rotate-12 transition-transform text-neon-purple"></i>
                             <span class="text-lg font-medium">9699172609</span>
                         </a>
                         <a href="mailto:defyaicompany@gmail.com"
-                            class="flex items-center gap-4 text-gray-300 hover:text-neon-cyan transition-colors group p-4 rounded-xl hover:bg-white/5 border border-transparent hover:border-white/5">
+                            class="flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-4 text-gray-300 hover:text-neon-cyan transition-colors group p-4 rounded-xl hover:bg-white/5 border border-transparent hover:border-white/5">
                             <i data-lucide="mail"
                                 class="w-6 h-6 group-hover:scale-110 transition-transform text-neon-purple"></i>
-                            <span class="text-lg font-medium">defyaicompany@gmail.com</span>
+                            <span
+                                class="text-lg font-medium whitespace-nowrap overflow-hidden text-ellipsis">defyaicompany@gmail.com</span>
                         </a>
                     </div>
                 </div>
@@ -1048,22 +1039,34 @@
         const mobileMenu = document.getElementById('mobileMenu');
         let isMenuOpen = false;
 
-        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        mobileMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleMobileMenu();
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (isMenuOpen && !mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                toggleMobileMenu();
+            }
+        });
 
         function toggleMobileMenu() {
             isMenuOpen = !isMenuOpen;
-            const icon = mobileMenuBtn.querySelector('i');
+
+            // Fix: select svg or i properly
+            const icon = mobileMenuBtn.querySelector('svg') || mobileMenuBtn.querySelector('i');
 
             if (isMenuOpen) {
-                mobileMenu.classList.remove('translate-x-full');
-                // Change icon to X
-                icon.setAttribute('data-lucide', 'x');
+                mobileMenu.classList.remove('opacity-0', 'pointer-events-none', '-translate-y-4');
+                mobileMenu.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
+                if (icon) icon.setAttribute('data-lucide', 'x');
             } else {
-                mobileMenu.classList.add('translate-x-full');
-                // Change icon back to Menu
-                icon.setAttribute('data-lucide', 'menu');
+                mobileMenu.classList.add('opacity-0', 'pointer-events-none', '-translate-y-4');
+                mobileMenu.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+                if (icon) icon.setAttribute('data-lucide', 'menu');
             }
-            lucide.createIcons();
+            if (typeof lucide !== 'undefined') lucide.createIcons();
         }
 
         // Testimonial Carousel Logic (Infinite Loop)
