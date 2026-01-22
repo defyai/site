@@ -219,7 +219,7 @@
                         class="relative text-neon-cyan w-6 h-6 md:w-7 md:h-7 rotate-0 group-hover:rotate-12 transition-transform duration-500"></i>
                 </div>
                 <span class="font-display text-xl md:text-2xl font-bold tracking-tight">
-                    Parvat<span class="text-neon-cyan">AI Solutions</span>
+                    Parvat<span class="text-neon-cyan">AI</span> Solutions
                 </span>
             </div>
 
@@ -320,7 +320,7 @@
                     class="relative glass-panel w-48 h-48 md:w-64 md:h-64 rounded-2xl flex items-center justify-center transform rotate-12 hover:rotate-0 transition-all duration-700 hover:scale-110">
                     <div class="text-center">
                         <i data-lucide="shield-check" class="w-16 h-16 text-neon-cyan mx-auto mb-4"></i>
-                        <h3 class="font-display font-bold text-2xl">ParvatAI Solutions</h3>
+                        <h3 class="font-display font-bold text-xl md:text-2xl">ParvatAI Solutions</h3>
                         <p class="text-xs text-gray-400 mt-2 uppercase tracking-widest">Active Protection</p>
                     </div>
                 </div>
@@ -379,7 +379,7 @@
                 <div id="solution"
                     class="glass-panel p-6 md:p-8 rounded-3xl border-l-4 border-neon-cyan hover:bg-neon-cyan/5 transition-colors">
                     <div class="flex justify-between items-start mb-6">
-                        <h3 class="font-display text-2xl font-bold text-white">The ParvatAI Solutions</h3>
+                        <h3 class="font-display text-2xl font-bold text-white">ParvatAI Solutions</h3>
                         <i data-lucide="check-circle-2" class="text-neon-cyan w-8 h-8"></i>
                     </div>
                     <ul class="space-y-4 text-gray-300">
@@ -916,18 +916,26 @@
                 <!-- Query Form -->
                 <div class="glass-panel p-6 md:p-8 rounded-2xl">
                     <h3 class="font-display text-2xl font-bold mb-6 text-left">Send a Query</h3>
-                    <form class="space-y-4 text-left">
+                    <form id="queryForm" class="space-y-4 text-left">
+                        <!-- Honeypot field for bot protection (Hidden from humans) -->
+                        <div style="display:none;">
+                            <label>Leave this field empty</label>
+                            <input type="text" name="honeypot" autocomplete="off">
+                        </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <!-- Name -->
                             <div class="space-y-2">
-                                <label for="name" class="text-sm font-medium text-gray-400">Name</label>
-                                <input type="text" id="name" name="name" placeholder="John Doe"
+                                <div class="flex justify-between items-center text-sm">
+                                    <label for="name" class="font-medium text-gray-400">Name</label>
+                                    <span id="nameCounter" class="text-xs text-gray-500">0/50</span>
+                                </div>
+                                <input type="text" id="name" name="name" placeholder="John Doe" required maxlength="50"
                                     class="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-all">
                             </div>
                             <!-- Email -->
                             <div class="space-y-2">
                                 <label for="email" class="text-sm font-medium text-gray-400">Email</label>
-                                <input type="email" id="email" name="email" placeholder="john@example.com"
+                                <input type="email" id="email" name="email" placeholder="john@example.com" required
                                     class="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-all">
                             </div>
                         </div>
@@ -936,7 +944,7 @@
                         <div class="space-y-2">
                             <label for="type" class="text-sm font-medium text-gray-400">Type of Question</label>
                             <div class="relative">
-                                <select id="type" name="type"
+                                <select id="type" name="type" required
                                     class="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-all appearance-none cursor-pointer">
                                     <option value="" disabled selected>Select a topic...</option>
                                     <option value="general" class="bg-neutral-900">General Inquiry</option>
@@ -951,15 +959,21 @@
 
                         <!-- Description -->
                         <div class="space-y-2">
-                            <label for="description" class="text-sm font-medium text-gray-400">Description</label>
-                            <textarea id="description" name="description" rows="4"
+                            <div class="flex justify-between items-center text-sm">
+                                <label for="description" class="font-medium text-gray-400">Description</label>
+                                <div class="flex gap-3 text-xs text-gray-500">
+                                    <span id="wordCounter">0/100 words</span>
+                                    <span id="charCounter">0/500</span>
+                                </div>
+                            </div>
+                            <textarea id="description" name="description" rows="4" required maxlength="500"
                                 placeholder="How can we help you today?"
                                 class="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-all resize-none"></textarea>
                         </div>
 
                         <!-- Submit Button -->
-                        <button type="submit"
-                            class="w-full bg-neon-cyan text-black font-bold py-3 rounded-lg hover:bg-cyan-400 transition-colors flex items-center justify-center gap-2 group">
+                        <button type="submit" id="submitBtn" disabled
+                            class="w-full bg-gray-600 cursor-not-allowed text-black font-bold py-3 rounded-lg transition-all flex items-center justify-center gap-2 group">
                             <span>Submit Query</span>
                             <i data-lucide="send" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
                         </button>
@@ -977,6 +991,23 @@
             </div>
         </div>
     </footer>
+
+    <!-- Custom Notification Modal -->
+    <div id="notificationModal"
+        class="fixed inset-0 z-[100] flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 backdrop-blur-sm bg-black/40">
+        <div
+            class="glass-panel p-8 rounded-3xl max-w-sm w-full mx-6 transform scale-90 transition-transform duration-300 flex flex-col items-center text-center border-neon-cyan/20">
+            <div id="modalIconContainer" class="w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                <!-- Icon will be inserted here -->
+            </div>
+            <h3 id="modalTitle" class="font-display text-2xl font-bold mb-2 text-white"></h3>
+            <p id="modalMessage" class="text-gray-400 mb-8"></p>
+            <button id="closeModalBtn"
+                class="w-full bg-neon-cyan text-black font-bold py-3 rounded-xl hover:bg-cyan-400 transition-all active:scale-95 shadow-[0_0_20px_rgba(0,243,255,0.2)]">
+                Got it
+            </button>
+        </div>
+    </div>
 
     <!-- Script for Interactions -->
     <script>
@@ -1217,6 +1248,155 @@
                     card.classList.add('opacity-50', 'scale-90');
                     card.classList.remove('scale-100', 'opacity-100', 'z-10');
                     if (panel) panel.classList.remove('border-neon-cyan/30', 'border');
+                }
+            });
+        }
+
+        // --- Google Sheets Form Integration ---
+        const queryForm = document.getElementById('queryForm');
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzyz8VSP-a5RUBdYFGaE-SoPo5y20XsJZ4XLNk-f3ONlx0aBQC7isx2jshlKLJT_wgs/exec';
+
+        // Modal Elements
+        const notificationModal = document.getElementById('notificationModal');
+        const modalContainer = notificationModal.querySelector('.glass-panel');
+        const modalIconContainer = document.getElementById('modalIconContainer');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalMessage = document.getElementById('modalMessage');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+
+        function showNotification(type, title, message) {
+            // Setup styles based on type
+            if (type === 'success') {
+                modalIconContainer.className = 'w-16 h-16 rounded-full flex items-center justify-center mb-6 bg-neon-cyan/10 border border-neon-cyan/30 text-neon-cyan shadow-[0_0_15px_rgba(0,243,255,0.2)]';
+                modalIconContainer.innerHTML = '<i data-lucide="check-circle" class="w-8 h-8"></i>';
+                closeModalBtn.className = 'w-full bg-neon-cyan text-black font-bold py-3 rounded-xl hover:bg-cyan-400 transition-all active:scale-95';
+            } else {
+                modalIconContainer.className = 'w-16 h-16 rounded-full flex items-center justify-center mb-6 bg-red-500/10 border border-red-500/30 text-red-500 shadow-[0_0_15px_rgba(239,68,68,0.2)]';
+                modalIconContainer.innerHTML = '<i data-lucide="alert-circle" class="w-8 h-8"></i>';
+                closeModalBtn.className = 'w-full bg-red-500 text-white font-bold py-3 rounded-xl hover:bg-red-600 transition-all active:scale-95';
+            }
+
+            modalTitle.textContent = title;
+            modalMessage.textContent = message;
+
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+
+            // Show Modal
+            notificationModal.classList.remove('opacity-0', 'pointer-events-none');
+            modalContainer.classList.remove('scale-90');
+            modalContainer.classList.add('scale-100');
+        }
+
+        function hideNotification() {
+            notificationModal.classList.add('opacity-0', 'pointer-events-none');
+            modalContainer.classList.remove('scale-100');
+            modalContainer.classList.add('scale-90');
+        }
+
+        closeModalBtn.addEventListener('click', hideNotification);
+        notificationModal.addEventListener('click', (e) => {
+            if (e.target === notificationModal) hideNotification();
+        });
+
+        // --- Form Validation & Limits ---
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const typeSelect = document.getElementById('type');
+        const descInput = document.getElementById('description');
+        const submitBtn = document.getElementById('submitBtn');
+        const nameCounter = document.getElementById('nameCounter');
+        const charCounter = document.getElementById('charCounter');
+        const wordCounter = document.getElementById('wordCounter');
+
+        function updateSubmitButton() {
+            const isNameValid = nameInput.value.trim().length > 0;
+            const isEmailValid = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/.test(emailInput.value);
+            const isTypeValid = typeSelect.value !== "";
+            const words = descInput.value.trim().split(/\s+/).filter(w => w.length > 0);
+            const isDescValid = descInput.value.trim().length > 0 && words.length <= 100;
+
+            if (isNameValid && isEmailValid && isTypeValid && isDescValid) {
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('bg-gray-600', 'cursor-not-allowed');
+                submitBtn.classList.add('bg-neon-cyan', 'hover:bg-cyan-400');
+            } else {
+                submitBtn.disabled = true;
+                submitBtn.classList.add('bg-gray-600', 'cursor-not-allowed');
+                submitBtn.classList.remove('bg-neon-cyan', 'hover:bg-cyan-400');
+            }
+        }
+
+        nameInput.addEventListener('input', () => {
+            nameCounter.textContent = `${nameInput.value.length}/50`;
+            updateSubmitButton();
+        });
+
+        emailInput.addEventListener('input', updateSubmitButton);
+        typeSelect.addEventListener('change', updateSubmitButton);
+
+        descInput.addEventListener('input', () => {
+            const charCount = descInput.value.length;
+            const words = descInput.value.trim().split(/\s+/).filter(w => w.length > 0);
+            const wordCount = words.length;
+
+            charCounter.textContent = `${charCount}/500`;
+            wordCounter.textContent = `${wordCount}/100 words`;
+
+            if (wordCount > 100) {
+                wordCounter.classList.add('text-red-500');
+            } else {
+                wordCounter.classList.remove('text-red-500');
+            }
+
+            updateSubmitButton();
+        });
+
+        if (queryForm) {
+            queryForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                // Bot Protection: Honeypot check
+                const honeypot = queryForm.querySelector('input[name="honeypot"]').value;
+                if (honeypot) {
+                    console.warn('Bot detected');
+                    return;
+                }
+
+                const submitBtn = queryForm.querySelector('button[type="submit"]');
+                const originalBtnContent = submitBtn.innerHTML;
+
+                // Loading state
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<span>Sending...</span><i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i>';
+                if (typeof lucide !== 'undefined') lucide.createIcons();
+
+                const formData = new FormData(queryForm);
+                const params = new URLSearchParams(formData);
+
+                try {
+                    // Using URLSearchParams (form-encoded) is much more reliable with Google Apps Script
+                    // mode: 'no-cors' allows us to send data even if the script doesn't have open CORS headers
+                    await fetch(scriptURL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        cache: 'no-cache',
+                        body: params,
+                    });
+
+                    // Success handling
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnContent;
+                    if (typeof lucide !== 'undefined') lucide.createIcons();
+
+                    showNotification('success', 'Query Sent', 'Your query has been sent successfully. We will get back to you soon.');
+                    queryForm.reset();
+                } catch (error) {
+                    console.error('Submission error:', error);
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnContent;
+                    if (typeof lucide !== 'undefined') lucide.createIcons();
+
+                    showNotification('error', 'Transmission Failed', 'Something went wrong while sending your request. Please try again.');
                 }
             });
         }
